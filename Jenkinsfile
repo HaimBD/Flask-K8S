@@ -3,7 +3,7 @@ pipeline {
 	agent any
 	
 	stages {
-		stage('Login to docker')
+		stage('Login to docker') {
 			steps {
 				withCredentials([
 					string(credentialsId: 'Docker_User', variable: 'DOCKER_USER'),
@@ -22,6 +22,7 @@ pipeline {
 					}
 				}
 			}
+		}
 	post {
 	// Clean after build
 	always {
