@@ -4,6 +4,7 @@ pipeline {
 
 	environment {
 		SHELL = '/bin/bash'
+		}
 	
 	stages {
 		stage('Login to docker') {
@@ -23,7 +24,7 @@ pipeline {
 				}
 			}
 		}
-	}
+	
 	post {
 	// Clean after build
 	always {
