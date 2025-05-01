@@ -8,7 +8,7 @@ pipeline {
 				withCredentials([
 					string(credentialsId: 'Docker_User', variable: 'DOCKER_USER'),
 					string(credentialsId: 'Docker_Pass', variable: 'DOCKER_PASS'),
-					string(credentialsId: 'Repository_Name, variable: 'REPOSITORY_NAME')
+					string(credentialsId: 'Repository_Name', variable: 'REPOSITORY_NAME')
 					])
 				{
 					sh '''
