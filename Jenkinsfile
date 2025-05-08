@@ -23,6 +23,7 @@ pipeline {
 					
 					}
 				}
+			}
 		#stage('Trigger deploy job') {
 			#steps {
 				#script {
