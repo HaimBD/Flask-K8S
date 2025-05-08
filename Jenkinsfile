@@ -3,7 +3,7 @@ pipeline {
 	agent any
 
 	environment {
-		"SHELL=/bin/bash"
+		SHELL = "/bin/bash"
 		}
 	
 	stages {
@@ -15,10 +15,13 @@ pipeline {
 					string(credentialsId: 'Repository_Name', variable: 'REPOSITORY_NAME')
 					])
 				{
-					sh ('echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin') 
-					sh ('docker build -t ${REPOSITORY_NAME}:${env.BUILD_NUMBER} app/.')
-					sh ('docker image tag ${REPOSITORY_NAME}:${env.BUILD_NUMBER} ${DOCKER_USER}/${REPOSITORY_NAME}:${env.BUILD_NUMBER}')
-					sh ('docker push ${DOCKER_USER}/${REPOSITORY_NAME}:${env.BUILD_NUMBER}')
+					sh '''
+					#!/bin/bash
+					('echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin') 
+					('docker build -t ${REPOSITORY_NAME}:${env.BUILD_NUMBER} app/.')
+					('docker image tag ${REPOSITORY_NAME}:${env.BUILD_NUMBER} ${DOCKER_USER}/${REPOSITORY_NAME}:${env.BUILD_NUMBER}')
+					('docker push ${DOCKER_USER}/${REPOSITORY_NAME}:${env.BUILD_NUMBER}')
+					'''
 					
 					}
 				}
