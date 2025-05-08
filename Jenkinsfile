@@ -16,9 +16,9 @@ pipeline {
 					#!/bin/bash
 					set -e
 					echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin 
-					docker build -t "${REPOSITORY_NAME}":"${env.BUILD_NUMBER}" app/.
-					docker image tag "${REPOSITORY_NAME}":"${env.BUILD_NUMBER}" "${DOCKER_USER}"/"${REPOSITORY_NAME}":"${env.BUILD_NUMBER}"
-					docker push "${DOCKER_USER}"/"${REPOSITORY_NAME}":"${env.BUILD_NUMBER}"
+					docker build -t "${REPOSITORY_NAME}":"${BUILD_NUMBER}" app/.
+					docker image tag "${REPOSITORY_NAME}":"${BUILD_NUMBER}" "${DOCKER_USER}"/"${REPOSITORY_NAME}":"${BUILD_NUMBER}"
+					docker push "${DOCKER_USER}"/"${REPOSITORY_NAME}":"${BUILD_NUMBER}"
 					'''
 					
 					}
