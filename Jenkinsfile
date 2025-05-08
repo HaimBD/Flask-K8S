@@ -23,12 +23,12 @@ pipeline {
 					
 					}
 				}
-		stage('Trigger deploy job') {
-			steps {
-				script {
-					def imageUrl = "${DOCKER_USER}"/"${REPOSITORY_NAME}":"${BUILD_NUMBER}"
-					build job: 'Releases', parameters: [
-						string(name; 'IMG_URL', value: imageUrl)]
+		#stage('Trigger deploy job') {
+			#steps {
+				#script {
+					#def imageUrl = "${DOCKER_USER}"/"${REPOSITORY_NAME}":"${BUILD_NUMBER}"
+					#build job: 'Releases', parameters: [
+						#string(name; 'IMG_URL', value: imageUrl)]
 			}
 		}
 
