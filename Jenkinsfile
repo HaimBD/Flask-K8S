@@ -3,7 +3,7 @@ pipeline {
 	agent any
 
 	environment {
-		SHELL = '/bin/bash'
+		"SHELL=/bin/bash"
 		}
 	
 	stages {
