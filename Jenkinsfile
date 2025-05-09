@@ -17,14 +17,14 @@ pipeline {
 					set -e
 					echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin 
 					docker build -t "${REPOSITORY_NAME}":"${BUILD_NUMBER}" app/.
-					docker image tag "${REPOSITORY_NAME}":"${BUILD_NUMBER} ${DOCKER_USER}"/"${REPOSITORY_NAME}":"${BUILD_NUMBER}"
+					docker image tag "${REPOSITORY_NAME}":"${BUILD_NUMBER}" "${DOCKER_USER}"/"${REPOSITORY_NAME}":"${BUILD_NUMBER}"
 					docker push "${DOCKER_USER}"/"${REPOSITORY_NAME}":"${BUILD_NUMBER}"
 					'''
 					
 					}
 				}
 
-
+			}
 	
 	post {
 	// Clean after build
