@@ -25,7 +25,7 @@ pipeline {
 				}
 
 			}
-	
+		}	
 	post {
 	// Clean after build
 	always {
@@ -38,5 +38,5 @@ pipeline {
             sh 'echo Adding this...........'
 		}
 	}
-}
+
 					
