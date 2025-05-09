@@ -27,7 +27,7 @@ pipeline {
 		stage('Trigger Deploy - Releases') {
                         steps {
                                 build job: 'Releases', wait: false, parameters: [
-                                string(name: 'IMG_URL', value: ""${DOCKER_USER}"/"${REPOSITORY_NAME}":"${BUILD_NUMBER}"")]
+                                string(name: 'IMG_URL', value: "${REPOSITORY_NAME}:${BUILD_NUMBER}")]
                                 }
                         }	
 	}	
