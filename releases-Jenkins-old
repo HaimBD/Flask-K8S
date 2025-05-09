@@ -19,7 +19,18 @@ pipeline {
                    {
 
                     sh '''
-		    echo "$IMG_URL"
+		    YAML_FILE = flask.yaml
+                    git config --global user.email "haimbendavid1995@gmail.com"
+                    git config --global user.name "HaimBD"
+                    git config --global --add safe.directory /home/ubuntu/jenkins/workspace/releases
+                    git fetch -p https://${USERNAME}:${PASSWORD}@github.com/HaimBD/cicd-project.git
+                    git checkout -f releases
+                    git merge -X theirs origin/main
+                    sed -i "s|image: .*|image: ${IMG_URL}|g" ${YAML_FILE}
+                    cat ${YAML_FILE}
+                    git add ${YAML_FILE}
+                    git commit --allow-empty -m $IMG_URL
+                    git push https://${USERNAME}:${PASSWORD}@github.com/HaimBD/cicd-project.git releases --force
                     '''
                     }
                 }
