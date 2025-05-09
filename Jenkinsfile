@@ -1,9 +1,4 @@
-stage('Trigger Deploy - Releases') {
-                        steps {
-                                build job: 'Releases', wait: false, parameters: [
-                                string(name: 'IMG_URL', value: ""${DOCKER_USER}"/"${REPOSITORY_NAME}":"${BUILD_NUMBER}"")]
-                                }
-                        }pipeline {
+pipeline {
 	
 	agent any
 
