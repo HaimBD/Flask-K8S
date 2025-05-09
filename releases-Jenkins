@@ -19,7 +19,7 @@ pipeline {
                    {
 
                     sh '''
-		    echo "$IMG_URL"
+		    echo "${IMG_URL}"
                     '''
                     }
                 }
