@@ -25,12 +25,6 @@ pipeline {
 				}
 			
 			}
-		stage('Trigger Deploy - Releases') {
-			steps {
-				build job: 'Releases', wait: false, parameters: [
-				string(name: 'IMG_URL', value: "${DOCKER_USER}"/"${REPOSITORY_NAME}":"${BUILD_NUMBER}")]
-				}
-			}
 		}	
 	post {
 	// Clean after build
