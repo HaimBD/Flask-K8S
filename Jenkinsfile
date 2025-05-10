@@ -34,7 +34,7 @@ pipeline {
 			
 				{
                                 build job: 'Releases', wait: false, parameters: [
-                                string(name: 'IMG_URL', value: "${DOCKER_USER}")
+                                string(name: 'IMG_URL', value: "${DOCKER_USER}"/"${REPOSITORY_NAME}":"${BUILD_NUMBER}")
 				]
                                 }
                         }	
