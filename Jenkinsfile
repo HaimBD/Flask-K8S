@@ -26,12 +26,20 @@ pipeline {
 			}
 		stage('Trigger Deploy - Releases') {
                         steps {
+                                withCredentials([
+                                        string(credentialsId: 'Docker_User', variable: 'DOCKER_USER'),
+                                        string(credentialsId: 'Docker_Pass', variable: 'DOCKER_PASS'),
+                                        string(credentialsId: 'Repository_Name', variable: 'REPOSITORY_NAME')
+                                        ])
+			
+				{
                                 build job: 'Releases', wait: false, parameters: [
                                 string(name: 'IMG_URL', value: "${DOCKER_USER}")
 				]
                                 }
                         }	
 	}	
+}
 	post {
 	// Clean after build
 	always {
